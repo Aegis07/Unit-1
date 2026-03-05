@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool isKnockedDown;
+
+
+
     void Start()
     {
-        
+       
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (transform.rotation.eulerAngles.x < -30) 
+        {
+            isKnockedDown = true; 
+        }
+        if (transform.rotation.eulerAngles.x > 30)
+        {
+            isKnockedDown = true;
+        }
+        if (transform.rotation.eulerAngles.z < -30)
+        {
+            isKnockedDown = true;
+        }
+        if (transform.rotation.eulerAngles.z > 30)
+        {
+            isKnockedDown = true;
+        }
     }
 }

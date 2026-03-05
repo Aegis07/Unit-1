@@ -41,4 +41,12 @@ public class FirstCode : MonoBehaviour
 
        
     }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Ball entered a trigger");
+        gameObject.SetActive(false);
+    }
+
 }
