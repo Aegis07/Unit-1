@@ -6,6 +6,7 @@ public class FirstCode : MonoBehaviour
     public Rigidbody ballRigidbody;
     public Transform aimTransform;
     public int throwForce;
+    public bool blockInput;
 
     void Start()
     {
@@ -15,6 +16,11 @@ public class FirstCode : MonoBehaviour
 
     void Update()
     {
+        if (blockInput)
+        {
+            return;
+        }
+
        if(ballTransform.position.x > -0.45f)
        { 
            if (Input.GetKey(KeyCode.LeftArrow))
@@ -35,6 +41,7 @@ public class FirstCode : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            blockInput = true;
             ballRigidbody.AddForce(aimTransform.forward * throwForce);
             aimTransform.gameObject.SetActive(false);
         }
@@ -45,8 +52,14 @@ public class FirstCode : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Ball entered a trigger");
-        gameObject.SetActive(false);
+        BallReachTheEnd();
     }
 
+
+    void BallReachTheEnd()
+    {
+        FindAnyObjectByType<GameManager>().CalculateScore();
+
+        Destroy(gameObject);
+    }
 }

@@ -14,19 +14,7 @@ public class Pin : MonoBehaviour
     
     void Update()
     {
-        if (transform.rotation.eulerAngles.x < -30) 
-        {
-            isKnockedDown = true; 
-        }
-        if (transform.rotation.eulerAngles.x > 30)
-        {
-            isKnockedDown = true;
-        }
-        if (transform.rotation.eulerAngles.z < -30)
-        {
-            isKnockedDown = true;
-        }
-        if (transform.rotation.eulerAngles.z > 30)
+        if( Vector3.Angle( transform.up , Vector3.up ) > 15 )
         {
             isKnockedDown = true;
         }
