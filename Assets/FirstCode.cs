@@ -52,7 +52,7 @@ public class FirstCode : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        BallReachTheEnd();
+        Invoke("BallReachTheEnd", 4);
     }
 
 
